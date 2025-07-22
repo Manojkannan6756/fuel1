@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Order Fuel - FuelGo</title>
+  <style>
+    body {
+      font-family: Arial;
+      background: #f9f9f9;
+      margin: 0;
+    }
+    header {
+      background: #ff6a00;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    .container {
+      max-width: 500px;
+      margin: 40px auto;
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px #ccc;
+    }
+    input, select, button {
+      width: 100%;
+      padding: 12px;
+      margin-top: 15px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+    button {
+      background: #28a745;
+      color: white;
+      font-weight: bold;
+      border: none;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #218838;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>FuelGo - Order Fuel</h1>
+  </header>
+
+  <div class="container">
+    <h2>Place Your Order</h2>
+    <label>Fuel Type:</label>
+    <select id="fuelType">
+      <option value="petrol">Petrol</option>
+      <option value="diesel">Diesel</option>
+    </select>
+
+    <label>Litres:</label>
+    <input type="number" id="litres" placeholder="Enter Litres" />
+
+    <label>Location:</label>
+    <input type="text" id="location" placeholder="Enter Location" />
+
+    <button onclick="placeOrder()">Order Now</button>
+  </div>
+
+  <script>
+    function placeOrder() {
+      const fuel = document.getElementById('fuelType').value;
+      const litres = document.getElementById('litres').value;
+      const location = document.getElementById('location').value;
+      const user = localStorage.getItem('loggedInUser');
+
+      if (!litres || !location) {
+        alert("Please fill all details.");
+        return;
+      }
+
+      alert(`Order placed!\nUser: ${user}\nFuel: ${fuel}\nQuantity: ${litres}L\nLocation: ${location}\nDelivery on the way!`);
+    }
+  </script>
+</body>
+</html>
